@@ -1,0 +1,31 @@
+
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS brand;
+DROP TABLE IF EXISTS product;
+
+CREATE TABLE category (
+    no INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    created_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE brand (
+    no INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    created_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE product (
+    no INT PRIMARY KEY AUTO_INCREMENT,
+    brand_no INT,
+    category_no INT,
+    name VARCHAR(255) NOT NULL,
+    price INT NOT NULL,
+    status VARCHAR(10) DEFAULT 'NEW',
+    created_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_product_1 ON product (category_no, brand_no);
