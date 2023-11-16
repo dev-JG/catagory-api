@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/vi/brand")
+@RequestMapping("/api/v1/brand")
 public class BrandController {
 
     private final BrandService brandService;

@@ -29,3 +29,4 @@ CREATE TABLE product (
 );
 
 CREATE INDEX idx_product_1 ON product (category_no, brand_no);
+CREATE INDEX idx_product_2 ON product (price);
