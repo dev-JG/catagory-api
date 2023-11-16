@@ -1,64 +1,64 @@
 package com.category.service.impl;
 
 import com.category.config.exception.CustomException;
-import com.category.model.dto.request.ProductAddCommand;
-import com.category.model.dto.request.ProductModifyCommand;
-import com.category.model.entity.Product;
+import com.category.model.dto.request.GoodsAddCommand;
+import com.category.model.dto.request.GoodsModifyCommand;
+import com.category.model.entity.Goods;
 import com.category.model.enums.CustomExceptionStatus;
-import com.category.model.mapper.ProductMapper;
+import com.category.model.mapper.GoodsMapper;
 import com.category.repository.BrandRepository;
 import com.category.repository.CategoryRepository;
-import com.category.repository.ProductRepository;
-import com.category.service.ProductService;
+import com.category.repository.GoodsRepository;
+import com.category.service.GoodsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService {
+public class GoodsServiceImpl implements GoodsService {
 
     private final CategoryRepository categoryRepository;
-    private final ProductRepository productRepository;
+    private final GoodsRepository goodsRepository;
     private final BrandRepository brandRepository;
-    private final ProductMapper productMapper;
+    private final GoodsMapper goodsMapper;
 
     @Override
-    public Long createProduct(ProductAddCommand addCommand) {
+    public Long createGoods(GoodsAddCommand addCommand) {
         validateBrand(addCommand.getBrandNo());
         validateCategory(addCommand.getCategoryNo());
 
-        Product productEntity = productMapper.toNewEntity(addCommand);
-        productRepository.save(productEntity);
+        Goods goodsEntity = goodsMapper.toNewEntity(addCommand);
+        goodsRepository.save(goodsEntity);
 
-        return productEntity.getNo();
+        return goodsEntity.getGoodsNo();
     }
 
     @Transactional
     @Override
-    public Boolean modifyProduct(long productNo, ProductModifyCommand modifyCommand) {
+    public Boolean modifyGoods(long goodsNo, GoodsModifyCommand modifyCommand) {
         validateBrand(modifyCommand.getBrandNo());
         validateCategory(modifyCommand.getCategoryNo());
-        validateProduct(productNo);
+        validateGoods(goodsNo);
 
-        var productEntity = productRepository.findById(productNo).get();
-        modifyCommand.modifyEntity(productEntity);
-        productRepository.save(productEntity);
+        var goodsEntity = goodsRepository.findById(goodsNo).get();
+        modifyCommand.modifyEntity(goodsEntity);
+        goodsRepository.save(goodsEntity);
 
         return true;
     }
 
     @Transactional
     @Override
-    public Boolean deleteProduct(long productNo) {
-        validateProduct(productNo);
-        productRepository.deleteById(productNo);
+    public Boolean deleteGoods(long goodsNo) {
+        validateGoods(goodsNo);
+        goodsRepository.deleteById(goodsNo);
         return true;
     }
 
-    private void validateProduct(long productNo) {
-        productRepository.findById(productNo).orElseThrow(
-                () -> new CustomException(CustomExceptionStatus.INVALID_PRODUCT_INFO)
+    private void validateGoods(long goodsNo) {
+        goodsRepository.findById(goodsNo).orElseThrow(
+                () -> new CustomException(CustomExceptionStatus.INVALID_GOODS_INFO)
         );
     }
 

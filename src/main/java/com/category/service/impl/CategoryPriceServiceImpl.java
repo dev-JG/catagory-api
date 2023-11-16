@@ -22,13 +22,13 @@ public class CategoryPriceServiceImpl implements CategoryPriceService {
         categoryService.validateCategoryByName(categoryName);
         var categoryNos = categoryService.getCategoryNosByName(categoryName);
 
-        var maxPrices = categoryPriceRepository.getProductByPrice(categoryNos, true);
-        var minPrices = categoryPriceRepository.getProductByPrice(categoryNos, false);
+        var maxPrices = categoryPriceRepository.getGoodsByPrice(categoryNos, true);
+        var minPrices = categoryPriceRepository.getGoodsByPrice(categoryNos, false);
 
         return PriceRangeByCategoryResponse.builder()
                 .categoryName(categoryName)
-                .maxPriceProducts(maxPrices)
-                .minPriceProducts(minPrices)
+                .maxPriceGoods(maxPrices)
+                .minPriceGoods(minPrices)
                 .build();
     }
 }

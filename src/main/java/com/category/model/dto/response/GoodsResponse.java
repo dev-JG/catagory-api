@@ -6,13 +6,13 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class ProductResponse {
+public class GoodsResponse {
     @JsonIgnore
     private Long brandNo;
     private String brandName;
     private Long price;
 
-    public ProductResponse(Long brandNo, String brandName, Long price) {
+    public GoodsResponse(Long brandNo, String brandName, Long price) {
         this.brandNo = brandNo;
         this.brandName = brandName;
         this.price = price;

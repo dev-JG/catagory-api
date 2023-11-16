@@ -5,9 +5,9 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class ProductAddCommand {
+public class GoodsAddCommand {
     private Long brandNo;
     private Long categoryNo;
-    private String name;
+    private String goodsName;
     private Long price;
 }

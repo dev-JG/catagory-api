@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/category/price")
+@RequestMapping("/api/v1/categories/price")
 public class CategoryPriceController {
 
     private final CategoryPriceService categoryPriceService;

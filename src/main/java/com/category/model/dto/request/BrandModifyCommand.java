@@ -6,5 +6,5 @@ import lombok.Setter;
 @Setter
 @Getter
 public class BrandModifyCommand {
-    private String name;
+    private String brandName;
 }

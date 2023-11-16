@@ -27,8 +27,8 @@ public class CategoryPriceServiceTest {
 
         // then
         Assertions.assertThat(response.getCategoryName()).isEqualTo(categoryName);
-        Assertions.assertThat(response.getMaxPriceProducts().get(0).getPrice()).isEqualTo(11400L);
-        Assertions.assertThat(response.getMinPriceProducts().get(0).getPrice()).isEqualTo(10000L);
+        Assertions.assertThat(response.getMaxPriceGoods().get(0).getPrice()).isEqualTo(11400L);
+        Assertions.assertThat(response.getMinPriceGoods().get(0).getPrice()).isEqualTo(10000L);
     }
 
     @Test

@@ -17,9 +17,9 @@ public class Brand extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "no")
-    private Long no;
+    @Column(name = "brand_no")
+    private Long brandNo;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "brand_name", nullable = false)
+    private String brandName;
 }

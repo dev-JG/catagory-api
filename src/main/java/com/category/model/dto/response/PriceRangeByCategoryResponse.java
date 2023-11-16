@@ -9,6 +9,6 @@ import java.util.List;
 @Builder
 public class PriceRangeByCategoryResponse {
     private String categoryName;
-    private List<ProductResponse> maxPriceProducts;
-    private List<ProductResponse> minPriceProducts;
+    private List<GoodsResponse> maxPriceGoods;
+    private List<GoodsResponse> minPriceGoods;
 }

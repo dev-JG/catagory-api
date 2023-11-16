@@ -12,14 +12,14 @@ import javax.persistence.*;
 @Getter
 @DynamicUpdate
 @NoArgsConstructor
-@Table(name = "product")
+@Table(name = "goods")
 @Entity
-public class Product extends BaseEntity {
+public class Goods extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "no")
-    private Long no;
+    @Column(name = "goods_no")
+    private Long goodsNo;
 
     @Column(name = "brand_no", nullable = false)
     private Long brandNo;
@@ -27,8 +27,8 @@ public class Product extends BaseEntity {
     @Column(name = "category_no", nullable = false)
     private Long categoryNo;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "goods_name", nullable = false)
+    private String goodsName;
 
     @Column(name = "price")
     private Long price;

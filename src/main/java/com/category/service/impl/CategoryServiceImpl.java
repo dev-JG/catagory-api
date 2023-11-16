@@ -19,14 +19,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Long> getCategoryNosByName(String categoryName) {
-        return categoryRepository.findCategoryByName(categoryName)
+        return categoryRepository.findCategoryByCategoryName(categoryName)
                 .stream()
-                .map(Category::getNo)
+                .map(Category::getCategoryNo)
                 .collect(Collectors.toList());
     }
 
     public void validateCategoryByName(String categoryName) {
-        if (categoryRepository.findCategoryByName(categoryName).isEmpty()) {
+        if (categoryRepository.findCategoryByCategoryName(categoryName).isEmpty()) {
             throw new CustomException(CustomExceptionStatus.INVALID_CATEGORY_INFO);
         }
     }

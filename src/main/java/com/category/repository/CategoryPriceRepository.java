@@ -1,10 +1,10 @@
 package com.category.repository;
 
-import static com.category.model.entity.QProduct.product;
+import static com.category.model.entity.QGoods.goods;
 import static com.category.model.entity.QBrand.brand;
 import static com.querydsl.jpa.JPAExpressions.select;
 
-import com.category.model.dto.response.ProductResponse;
+import com.category.model.dto.response.GoodsResponse;
 import com.category.model.enums.DisplayStatus;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.NumberExpression;
@@ -20,23 +20,23 @@ public class CategoryPriceRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
 
-    public List<ProductResponse> getProductByPrice(List<Long> categoryNos, boolean isMax) {
-        NumberExpression<Long> priceCondition = isMax ? product.price.max() : product.price.min();
+    public List<GoodsResponse> getGoodsByPrice(List<Long> categoryNos, boolean isMax) {
+        NumberExpression<Long> priceCondition = isMax ? goods.price.max() : goods.price.min();
 
         return jpaQueryFactory
-                .select(Projections.constructor(ProductResponse.class,
-                        brand.no,
-                        brand.name,
-                        product.price
+                .select(Projections.constructor(GoodsResponse.class,
+                        brand.brandNo,
+                        brand.brandName,
+                        goods.price
                 ))
-                .from(product, brand)
-                .where(product.status.eq(DisplayStatus.SALE) // 판매중인 상품만
-                        .and(product.categoryNo.in(categoryNos))
-                        .and(product.brandNo.eq(brand.no))
-                        .and(product.price.eq(
+                .from(goods, brand)
+                .where(goods.status.eq(DisplayStatus.SALE) // 판매중인 상품만
+                        .and(goods.categoryNo.in(categoryNos))
+                        .and(goods.brandNo.eq(brand.brandNo))
+                        .and(goods.price.eq(
                                 select(priceCondition)
-                                        .from(product)
-                                        .where(product.categoryNo.in(categoryNos))
+                                        .from(goods)
+                                        .where(goods.categoryNo.in(categoryNos))
                         ))
                 )
                 .fetch();

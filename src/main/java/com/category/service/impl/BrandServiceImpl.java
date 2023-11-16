@@ -24,7 +24,7 @@ public class BrandServiceImpl implements BrandService {
         var brandEntity = brandMapper.toNewEntity(addCommand);
         brandRepository.save(brandEntity);
 
-        return brandEntity.getNo();
+        return brandEntity.getBrandNo();
     }
 
     @Transactional
@@ -32,7 +32,7 @@ public class BrandServiceImpl implements BrandService {
     public Boolean modifyBrand(long brandNo, BrandModifyCommand modifyCommand) {
         validateBrand(brandNo);
         var brandEntity = brandRepository.findById(brandNo).get();
-        brandEntity.setName(modifyCommand.getName());
+        brandEntity.setBrandName(modifyCommand.getBrandName());
         brandRepository.save(brandEntity);
 
         return true;

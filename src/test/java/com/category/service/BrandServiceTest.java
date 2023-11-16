@@ -23,7 +23,7 @@ public class BrandServiceTest {
         // given
         var brandService = this.brandService;
         var addCommand = new BrandAddCommand();
-        addCommand.setName("탑텐");
+        addCommand.setBrandName("탑텐");
 
         // when
         var brandNo = brandService.createBrand(addCommand);
@@ -39,7 +39,7 @@ public class BrandServiceTest {
         var brandService = this.brandService;
         var brandNo = 100L;
         var modifyCommand = new BrandModifyCommand();
-        modifyCommand.setName("탑텐");
+        modifyCommand.setBrandName("탑텐");
 
         // when
         var result = brandService.modifyBrand(brandNo, modifyCommand);
@@ -54,7 +54,7 @@ public class BrandServiceTest {
         var brandService = this.brandService;
         var brandNo = 1L;
         var modifyCommand = new BrandModifyCommand();
-        modifyCommand.setName("탑텐");
+        modifyCommand.setBrandName("탑텐");
 
         // when & then
         Assertions.assertThatThrownBy(() -> brandService.modifyBrand(brandNo, modifyCommand))
@@ -79,7 +79,7 @@ public class BrandServiceTest {
     void 브랜드_삭제_테스트_실패() {
         // given
         var brandService = this.brandService;
-        var brandNo = 1L;
+        var brandNo = 2L;
 
         // when & then
         Assertions.assertThatThrownBy(() -> brandService.deleteBrand(brandNo))
