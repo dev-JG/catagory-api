@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class BrandModifyRequest {
+public class BrandAddCommand {
     private String name;
 }

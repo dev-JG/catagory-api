@@ -1,8 +1,8 @@
 package com.category.service;
 
 import com.category.config.exception.CustomException;
-import com.category.model.dto.request.ProductAddRequest;
-import com.category.model.dto.request.ProductModifyRequest;
+import com.category.model.dto.request.ProductAddCommand;
+import com.category.model.dto.request.ProductModifyCommand;
 import com.category.model.enums.CustomExceptionStatus;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class ProductServiceTest {
     void 신규상품_생성테스트() {
         // given
         var productService = this.productService;
-        var addRequest = new ProductAddRequest();
+        var addRequest = new ProductAddCommand();
         addRequest.setName("지오다노 아우터");
         addRequest.setBrandNo(100L);
         addRequest.setCategoryNo(10L);
@@ -41,7 +41,7 @@ public class ProductServiceTest {
         // given
         var productService = this.productService;
         var productNo = 1L;
-        var modifyRequest = new ProductModifyRequest();
+        var modifyRequest = new ProductModifyCommand();
         modifyRequest.setName("지오다노 아우터");
         modifyRequest.setBrandNo(100L);
         modifyRequest.setCategoryNo(10L);
@@ -59,7 +59,7 @@ public class ProductServiceTest {
         // given
         var productService = this.productService;
         var productNo = 1L;
-        var modifyRequest = new ProductModifyRequest();
+        var modifyRequest = new ProductModifyCommand();
         modifyRequest.setName("지오다노 아우터");
         modifyRequest.setBrandNo(10L);
         modifyRequest.setCategoryNo(10L);
@@ -76,7 +76,7 @@ public class ProductServiceTest {
         // given
         var productService = this.productService;
         var productNo = 1L;
-        var modifyRequest = new ProductModifyRequest();
+        var modifyRequest = new ProductModifyCommand();
         modifyRequest.setName("지오다노 아우터");
         modifyRequest.setBrandNo(100L);
         modifyRequest.setCategoryNo(15L);

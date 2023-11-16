@@ -1,13 +1,13 @@
 package com.category.service;
 
-import com.category.model.dto.request.ProductAddRequest;
-import com.category.model.dto.request.ProductModifyRequest;
+import com.category.model.dto.request.ProductAddCommand;
+import com.category.model.dto.request.ProductModifyCommand;
 
 public interface ProductService {
 
-    Long createProduct(ProductAddRequest addRequest);
+    Long createProduct(ProductAddCommand addCommand);
 
-    Boolean modifyProduct(long productNo, ProductModifyRequest modifyRequest);
+    Boolean modifyProduct(long productNo, ProductModifyCommand modifyCommand);
 
     Boolean deleteProduct(long productNo);
 }

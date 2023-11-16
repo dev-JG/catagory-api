@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Setter
 @Getter
-public class ProductModifyRequest {
+public class ProductModifyCommand {
     private Long brandNo;
     private Long categoryNo;
     private String name;

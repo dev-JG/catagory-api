@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class ProductAddRequest {
+public class ProductAddCommand {
     private Long brandNo;
     private Long categoryNo;
     private String name;

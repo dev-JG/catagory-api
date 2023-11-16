@@ -1,7 +1,7 @@
 package com.category.controller;
 
-import com.category.model.dto.request.BrandAddRequest;
-import com.category.model.dto.request.BrandModifyRequest;
+import com.category.model.dto.request.BrandAddCommand;
+import com.category.model.dto.request.BrandModifyCommand;
 import com.category.service.BrandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,20 +16,20 @@ public class BrandController {
 
     @PostMapping("")
     public ResponseEntity<Long> createBrand(
-            @RequestBody BrandAddRequest addRequest
+            @RequestBody BrandAddCommand addCommand
     ) {
         return ResponseEntity.ok(
-                brandService.createBrand(addRequest)
+                brandService.createBrand(addCommand)
         );
     }
 
     @PutMapping("/{brandNo}")
     public ResponseEntity<Boolean> modifyBrand(
             @PathVariable long brandNo,
-            @RequestBody BrandModifyRequest modifyRequest
+            @RequestBody BrandModifyCommand modifyCommand
     ) {
         return ResponseEntity.ok(
-                brandService.modifyBrand(brandNo, modifyRequest)
+                brandService.modifyBrand(brandNo, modifyCommand)
         );
     }
 

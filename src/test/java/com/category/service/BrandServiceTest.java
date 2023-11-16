@@ -1,8 +1,8 @@
 package com.category.service;
 
 import com.category.config.exception.CustomException;
-import com.category.model.dto.request.BrandAddRequest;
-import com.category.model.dto.request.BrandModifyRequest;
+import com.category.model.dto.request.BrandAddCommand;
+import com.category.model.dto.request.BrandModifyCommand;
 import com.category.model.enums.CustomExceptionStatus;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,11 +22,11 @@ public class BrandServiceTest {
     void 신규브랜드_생성_테스트() {
         // given
         var brandService = this.brandService;
-        var addRequest = new BrandAddRequest();
-        addRequest.setName("탑텐");
+        var addCommand = new BrandAddCommand();
+        addCommand.setName("탑텐");
 
         // when
-        var brandNo = brandService.createBrand(addRequest);
+        var brandNo = brandService.createBrand(addCommand);
 
         // then
         Assertions.assertThat(brandNo).isNotNull();
@@ -38,11 +38,11 @@ public class BrandServiceTest {
         // given
         var brandService = this.brandService;
         var brandNo = 100L;
-        var modifyRequest = new BrandModifyRequest();
-        modifyRequest.setName("탑텐");
+        var modifyCommand = new BrandModifyCommand();
+        modifyCommand.setName("탑텐");
 
         // when
-        var result = brandService.modifyBrand(brandNo, modifyRequest);
+        var result = brandService.modifyBrand(brandNo, modifyCommand);
 
         // then
         Assertions.assertThat(result).isTrue();
@@ -53,11 +53,11 @@ public class BrandServiceTest {
         // given
         var brandService = this.brandService;
         var brandNo = 1L;
-        var modifyRequest = new BrandModifyRequest();
-        modifyRequest.setName("탑텐");
+        var modifyCommand = new BrandModifyCommand();
+        modifyCommand.setName("탑텐");
 
         // when & then
-        Assertions.assertThatThrownBy(() -> brandService.modifyBrand(brandNo, modifyRequest))
+        Assertions.assertThatThrownBy(() -> brandService.modifyBrand(brandNo, modifyCommand))
                 .isInstanceOf(CustomException.class)
                 .hasMessageContaining(CustomExceptionStatus.INVALID_BRAND_INFO.getMessage());
     }

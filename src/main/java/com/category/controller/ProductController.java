@@ -1,7 +1,7 @@
 package com.category.controller;
 
-import com.category.model.dto.request.ProductAddRequest;
-import com.category.model.dto.request.ProductModifyRequest;
+import com.category.model.dto.request.ProductAddCommand;
+import com.category.model.dto.request.ProductModifyCommand;
 import com.category.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,20 +16,20 @@ public class ProductController {
 
     @PostMapping("")
     public ResponseEntity<Long> createProduct(
-            @RequestBody ProductAddRequest addRequest
+            @RequestBody ProductAddCommand addCommand
     ) {
         return ResponseEntity.ok(
-                productService.createProduct(addRequest)
+                productService.createProduct(addCommand)
         );
     }
 
     @PutMapping("/{productNo}")
     public ResponseEntity<Boolean> modifyProduct(
             @PathVariable long productNo,
-            @RequestBody ProductModifyRequest modifyRequest
+            @RequestBody ProductModifyCommand modifyCommand
     ) {
         return ResponseEntity.ok(
-                productService.modifyProduct(productNo, modifyRequest)
+                productService.modifyProduct(productNo, modifyCommand)
         );
     }
 

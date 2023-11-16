@@ -1,8 +1,8 @@
 package com.category.service.impl;
 
 import com.category.config.exception.CustomException;
-import com.category.model.dto.request.ProductAddRequest;
-import com.category.model.dto.request.ProductModifyRequest;
+import com.category.model.dto.request.ProductAddCommand;
+import com.category.model.dto.request.ProductModifyCommand;
 import com.category.model.entity.Product;
 import com.category.model.enums.CustomExceptionStatus;
 import com.category.model.mapper.ProductMapper;
@@ -24,11 +24,11 @@ public class ProductServiceImpl implements ProductService {
     private final ProductMapper productMapper;
 
     @Override
-    public Long createProduct(ProductAddRequest addRequest) {
-        validateBrand(addRequest.getBrandNo());
-        validateCategory(addRequest.getCategoryNo());
+    public Long createProduct(ProductAddCommand addCommand) {
+        validateBrand(addCommand.getBrandNo());
+        validateCategory(addCommand.getCategoryNo());
 
-        Product productEntity = productMapper.toNewEntity(addRequest);
+        Product productEntity = productMapper.toNewEntity(addCommand);
         productRepository.save(productEntity);
 
         return productEntity.getNo();
@@ -36,13 +36,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional
     @Override
-    public Boolean modifyProduct(long productNo, ProductModifyRequest modifyRequest) {
-        validateBrand(modifyRequest.getBrandNo());
-        validateCategory(modifyRequest.getCategoryNo());
+    public Boolean modifyProduct(long productNo, ProductModifyCommand modifyCommand) {
+        validateBrand(modifyCommand.getBrandNo());
+        validateCategory(modifyCommand.getCategoryNo());
         validateProduct(productNo);
 
         var productEntity = productRepository.findById(productNo).get();
-        modifyRequest.modifyEntity(productEntity);
+        modifyCommand.modifyEntity(productEntity);
         productRepository.save(productEntity);
 
         return true;

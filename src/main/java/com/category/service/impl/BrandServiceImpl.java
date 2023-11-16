@@ -1,8 +1,8 @@
 package com.category.service.impl;
 
 import com.category.config.exception.CustomException;
-import com.category.model.dto.request.BrandAddRequest;
-import com.category.model.dto.request.BrandModifyRequest;
+import com.category.model.dto.request.BrandAddCommand;
+import com.category.model.dto.request.BrandModifyCommand;
 import com.category.model.enums.CustomExceptionStatus;
 import com.category.model.mapper.BrandMapper;
 import com.category.repository.BrandRepository;
@@ -19,9 +19,9 @@ public class BrandServiceImpl implements BrandService {
     private final BrandMapper brandMapper;
 
     @Override
-    public Long createBrand(BrandAddRequest addRequest) {
+    public Long createBrand(BrandAddCommand addCommand) {
 
-        var brandEntity = brandMapper.toNewEntity(addRequest);
+        var brandEntity = brandMapper.toNewEntity(addCommand);
         brandRepository.save(brandEntity);
 
         return brandEntity.getNo();
@@ -29,10 +29,10 @@ public class BrandServiceImpl implements BrandService {
 
     @Transactional
     @Override
-    public Boolean modifyBrand(long brandNo, BrandModifyRequest modifyRequest) {
+    public Boolean modifyBrand(long brandNo, BrandModifyCommand modifyCommand) {
         validateBrand(brandNo);
         var brandEntity = brandRepository.findById(brandNo).get();
-        brandEntity.setName(modifyRequest.getName());
+        brandEntity.setName(modifyCommand.getName());
         brandRepository.save(brandEntity);
 
         return true;
