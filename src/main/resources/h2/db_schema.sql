@@ -2,6 +2,7 @@
 DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS brand;
 DROP TABLE IF EXISTS goods;
+DROP TABLE IF EXISTS category_min_goods;
 
 CREATE TABLE category (
     category_no INT PRIMARY KEY AUTO_INCREMENT,
@@ -27,6 +28,12 @@ CREATE TABLE goods (
     created_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     modified_date DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-
 CREATE INDEX idx_goods_1 ON goods (category_no, brand_no);
 CREATE INDEX idx_goods_2 ON goods (price);
+
+CREATE TABLE category_min_goods (
+    category_no INT PRIMARY KEY,
+    brand_no INT,
+    goods_no INT,
+    last_updated_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);

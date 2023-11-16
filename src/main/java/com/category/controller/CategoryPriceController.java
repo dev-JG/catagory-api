@@ -1,6 +1,7 @@
 package com.category.controller;
 
 import com.category.model.dto.response.MinAndMaxPriceGoodsByCategoryResponse;
+import com.category.model.dto.response.MinPriceGoodsByBrandResponse;
 import com.category.model.dto.response.MinPriceGoodsByCategoryResponse;
 import com.category.service.CategoryPriceService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,14 @@ public class CategoryPriceController {
 
         return ResponseEntity.ok(
                 categoryPriceService.getCategoryMinPriceGoods()
+        );
+    }
+
+    @GetMapping("/brand/min")
+    public ResponseEntity<MinPriceGoodsByBrandResponse> getAllCategoryMinPriceByBrand() {
+
+        return ResponseEntity.ok(
+                categoryPriceService.getAllCategoryMinPriceByBrand()
         );
     }
 }

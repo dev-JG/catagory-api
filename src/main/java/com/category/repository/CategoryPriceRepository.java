@@ -3,6 +3,7 @@ package com.category.repository;
 import static com.category.model.entity.QGoods.goods;
 import static com.category.model.entity.QBrand.brand;
 import static com.category.model.entity.QCategory.category;
+import static com.category.model.entity.QCategoryMinGoods.categoryMinGoods;
 import static com.querydsl.jpa.JPAExpressions.select;
 
 import com.category.model.dto.response.GoodsResponse;
@@ -45,14 +46,36 @@ public class CategoryPriceRepository {
                 .fetch();
     }
 
+    public List<GoodsResponse> findMinPriceGoodsByAllCategoryNo() {
+        return jpaQueryFactory
+                .select(Projections.constructor(GoodsResponse.class,
+                        goods.goodsNo,
+                        category.categoryNo,
+                        category.categoryName,
+                        brand.brandNo,
+                        brand.brandName,
+                        goods.price
+                ))
+                .from(categoryMinGoods)
+                .innerJoin(goods).on(categoryMinGoods.goodsNo.eq(goods.goodsNo))
+                .innerJoin(brand).on(categoryMinGoods.brandNo.eq(brand.brandNo))
+                .innerJoin(category).on(categoryMinGoods.categoryNo.eq(category.categoryNo))
+                .where(goods.status.eq(DisplayStatus.SALE))
+                .fetch();
+    }
+
     public GoodsResponse findMinPriceGoodsByCategoryNo(Long categoryNo) {
         SubQueryExpression<Long> minPriceSubQuery = JPAExpressions
                 .select(goods.price.min())
                 .from(goods)
-                .where(goods.categoryNo.eq(category.categoryNo));
+                .where(goods.status.eq(DisplayStatus.SALE)
+                        .and(goods.categoryNo.eq(category.categoryNo))
+                );
 
         return jpaQueryFactory
                 .select(Projections.constructor(GoodsResponse.class,
+                        goods.goodsNo,
+                        category.categoryNo,
                         category.categoryName,
                         brand.brandNo,
                         brand.brandName,

@@ -1,7 +1,7 @@
 package com.category.service.impl;
 
-import com.category.model.dto.response.GoodsResponse;
 import com.category.model.dto.response.MinAndMaxPriceGoodsByCategoryResponse;
+import com.category.model.dto.response.MinPriceGoodsByBrandResponse;
 import com.category.model.dto.response.MinPriceGoodsByCategoryResponse;
 import com.category.repository.CategoryPriceRepository;
 import com.category.service.CategoryPriceService;
@@ -9,9 +9,6 @@ import com.category.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -39,13 +36,14 @@ public class CategoryPriceServiceImpl implements CategoryPriceService {
 
     @Override
     public MinPriceGoodsByCategoryResponse getCategoryMinPriceGoods() {
-        var allCategoryNos = categoryService.getAllCategoryNos();
-        List<GoodsResponse> minPrices = allCategoryNos.stream()
-                .map(categoryPriceRepository::findMinPriceGoodsByCategoryNo)
-                .collect(Collectors.toList());
-
+        var minPrices = categoryPriceRepository.findMinPriceGoodsByAllCategoryNo();
         return MinPriceGoodsByCategoryResponse.builder()
                 .goodsList(minPrices)
                 .build();
+    }
+
+    @Override
+    public MinPriceGoodsByBrandResponse getAllCategoryMinPriceByBrand() {
+        return null;
     }
 }
