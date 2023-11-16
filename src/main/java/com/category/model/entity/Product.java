@@ -33,6 +33,7 @@ public class Product extends BaseEntity {
     @Column(name = "price")
     private Long price;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private DisplayStatus status;
 }

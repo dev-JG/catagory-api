@@ -34,7 +34,7 @@ public class BrandServiceTest {
     }
 
     @Test
-    void 신규브랜드_수정_테스트() {
+    void 브랜드_수정_테스트() {
         // given
         var brandService = this.brandService;
         var brandNo = 100L;
@@ -49,7 +49,7 @@ public class BrandServiceTest {
     }
 
     @Test
-    void 신규브랜드_수정_테스트_실패() {
+    void 브랜드_수정_테스트_실패() {
         // given
         var brandService = this.brandService;
         var brandNo = 1L;
@@ -63,7 +63,7 @@ public class BrandServiceTest {
     }
 
     @Test
-    void 신규브랜드_삭제_테스트() {
+    void 브랜드_삭제_테스트() {
         // given
         var brandService = this.brandService;
         var brandNo = 100L;
@@ -76,7 +76,7 @@ public class BrandServiceTest {
     }
 
     @Test
-    void 신규브랜드_삭제_테스트_실패() {
+    void 브랜드_삭제_테스트_실패() {
         // given
         var brandService = this.brandService;
         var brandNo = 1L;

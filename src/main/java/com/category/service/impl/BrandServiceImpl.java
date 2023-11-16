@@ -47,10 +47,9 @@ public class BrandServiceImpl implements BrandService {
         return true;
     }
 
-    private boolean validateBrand(long brandNo) {
+    private void validateBrand(long brandNo) {
         brandRepository.findById(brandNo).orElseThrow(
                 () -> new CustomException(CustomExceptionStatus.INVALID_BRAND_INFO)
         );
-        return true;
     }
 }
