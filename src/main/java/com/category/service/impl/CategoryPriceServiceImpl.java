@@ -1,7 +1,6 @@
 package com.category.service.impl;
 
 import com.category.model.dto.response.PriceRangeByCategoryResponse;
-import com.category.model.mapper.ProductMapper;
 import com.category.repository.CategoryPriceRepository;
 import com.category.service.CategoryPriceService;
 import com.category.service.CategoryService;
@@ -16,7 +15,6 @@ public class CategoryPriceServiceImpl implements CategoryPriceService {
 
     private final CategoryService categoryService;
     private final CategoryPriceRepository categoryPriceRepository;
-    private final ProductMapper productMapper;
 
     @Transactional(readOnly = true)
     @Override
@@ -24,13 +22,13 @@ public class CategoryPriceServiceImpl implements CategoryPriceService {
         categoryService.validateCategoryByName(categoryName);
         var categoryNos = categoryService.getCategoryNosByName(categoryName);
 
-        var maxPrice = categoryPriceRepository.getProductByMaxPrice(categoryNos);
-        var minPrice = categoryPriceRepository.getProductByMinPrice(categoryNos);
+        var maxPrices = categoryPriceRepository.getProductByPrice(categoryNos, true);
+        var minPrices = categoryPriceRepository.getProductByPrice(categoryNos, false);
 
         return PriceRangeByCategoryResponse.builder()
                 .categoryName(categoryName)
-                .maxPriceProducts(maxPrice)
-                .minPriceProducts(minPrice)
+                .maxPriceProducts(maxPrices)
+                .minPriceProducts(minPrices)
                 .build();
     }
 }
