@@ -1,8 +1,11 @@
 package com.category.service;
 
-import com.category.model.dto.response.PriceRangeByCategoryResponse;
+import com.category.model.dto.response.MinAndMaxPriceGoodsByCategoryResponse;
+import com.category.model.dto.response.MinPriceGoodsByCategoryResponse;
 
 public interface CategoryPriceService {
 
-    PriceRangeByCategoryResponse getPriceRangeByCategory(String categoryName);
+    MinAndMaxPriceGoodsByCategoryResponse getMinAndMaxPriceGoodsByCategory(String categoryName);
+
+    MinPriceGoodsByCategoryResponse getCategoryMinPriceGoods();
 }

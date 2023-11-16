@@ -23,7 +23,7 @@ public class CategoryPriceServiceTest {
         var categoryName = "상의";
 
         // when
-        var response = categoryPriceService.getPriceRangeByCategory(categoryName);
+        var response = categoryPriceService.getMinAndMaxPriceGoodsByCategory(categoryName);
 
         // then
         Assertions.assertThat(response.getCategoryName()).isEqualTo(categoryName);
@@ -38,8 +38,21 @@ public class CategoryPriceServiceTest {
         var categoryName = "아우터 큰거";
 
         // when & then
-        Assertions.assertThatThrownBy(() -> categoryPriceService.getPriceRangeByCategory(categoryName))
+        Assertions.assertThatThrownBy(() -> categoryPriceService.getMinAndMaxPriceGoodsByCategory(categoryName))
                 .isInstanceOf(CustomException.class)
                 .hasMessageContaining(CustomExceptionStatus.INVALID_CATEGORY_INFO.getMessage());
+    }
+
+    @Test
+    void 카테고리별_최소_가격_정보조회_테스트() {
+        // given
+        var categoryPriceService = this.categoryPriceService;
+
+        // when
+        var response = categoryPriceService.getCategoryMinPriceGoods();
+
+        // then
+        Assertions.assertThat(response.getTotalPrice()).isEqualTo(34100);
+        Assertions.assertThat(response.getGoodsList().size()).isEqualTo(8);
     }
 }

@@ -1,6 +1,7 @@
 package com.category.controller;
 
-import com.category.model.dto.response.PriceRangeByCategoryResponse;
+import com.category.model.dto.response.MinAndMaxPriceGoodsByCategoryResponse;
+import com.category.model.dto.response.MinPriceGoodsByCategoryResponse;
 import com.category.service.CategoryPriceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,20 @@ public class CategoryPriceController {
 
     private final CategoryPriceService categoryPriceService;
 
-    @GetMapping("/price-range")
-    public ResponseEntity<PriceRangeByCategoryResponse> getPriceRangeByCategory(
+    @GetMapping("/goods/max-min")
+    public ResponseEntity<MinAndMaxPriceGoodsByCategoryResponse> getMinAndMaxPriceGoodsByCategory(
             @RequestParam(value = "categoryName") String categoryName) {
 
         return ResponseEntity.ok(
-                categoryPriceService.getPriceRangeByCategory(categoryName)
+                categoryPriceService.getMinAndMaxPriceGoodsByCategory(categoryName)
+        );
+    }
+
+    @GetMapping("/goods/min")
+    public ResponseEntity<MinPriceGoodsByCategoryResponse> getCategoryMinPriceGoods() {
+
+        return ResponseEntity.ok(
+                categoryPriceService.getCategoryMinPriceGoods()
         );
     }
 }

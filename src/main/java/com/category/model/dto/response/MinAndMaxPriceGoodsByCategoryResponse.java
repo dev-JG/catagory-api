@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @Builder
-public class PriceRangeByCategoryResponse {
+public class MinAndMaxPriceGoodsByCategoryResponse {
     private String categoryName;
     private List<GoodsResponse> maxPriceGoods;
     private List<GoodsResponse> minPriceGoods;

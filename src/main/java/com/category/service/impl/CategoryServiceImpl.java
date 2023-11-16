@@ -7,6 +7,7 @@ import com.category.repository.CategoryRepository;
 import com.category.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,9 +18,19 @@ public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
 
+    @Transactional(readOnly = true)
     @Override
     public List<Long> getCategoryNosByName(String categoryName) {
         return categoryRepository.findCategoryByCategoryName(categoryName)
+                .stream()
+                .map(Category::getCategoryNo)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Long> getAllCategoryNos() {
+        return categoryRepository.findAll()
                 .stream()
                 .map(Category::getCategoryNo)
                 .collect(Collectors.toList());

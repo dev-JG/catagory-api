@@ -6,5 +6,7 @@ public interface CategoryService {
 
     List<Long> getCategoryNosByName(String categoryName);
 
+    List<Long> getAllCategoryNos();
+
     void validateCategoryByName(String categoryName);
 }
