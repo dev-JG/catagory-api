@@ -1,8 +1,8 @@
 package com.category.service;
 
 import com.category.config.exception.CustomException;
-import com.category.model.dto.request.BrandAddCommand;
-import com.category.model.dto.request.BrandModifyCommand;
+import com.category.model.dto.command.BrandAddCommand;
+import com.category.model.dto.command.BrandModifyCommand;
 import com.category.model.enums.CustomExceptionStatus;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

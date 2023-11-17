@@ -1,4 +1,4 @@
-package com.category.model.dto.request;
+package com.category.model.dto.command;
 
 import com.category.model.entity.Goods;
 import com.category.model.enums.DisplayStatus;

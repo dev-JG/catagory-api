@@ -1,6 +1,6 @@
 package com.category.model.mapper;
 
-import com.category.model.dto.request.GoodsAddCommand;
+import com.category.model.dto.command.GoodsAddCommand;
 import com.category.model.entity.Goods;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

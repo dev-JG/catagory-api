@@ -1,4 +1,4 @@
-package com.category.model.dto.request;
+package com.category.model.dto.command;
 
 import lombok.Getter;
 import lombok.Setter;
