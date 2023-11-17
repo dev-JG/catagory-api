@@ -1,7 +1,7 @@
 package com.category.service;
 
-import com.category.model.dto.request.BrandAddCommand;
-import com.category.model.dto.request.BrandModifyCommand;
+import com.category.model.dto.command.BrandAddCommand;
+import com.category.model.dto.command.BrandModifyCommand;
 
 public interface BrandService {
 

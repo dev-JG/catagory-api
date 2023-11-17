@@ -1,8 +1,8 @@
 package com.category.service.impl;
 
 import com.category.config.exception.CustomException;
-import com.category.model.dto.request.GoodsAddCommand;
-import com.category.model.dto.request.GoodsModifyCommand;
+import com.category.model.dto.command.GoodsAddCommand;
+import com.category.model.dto.command.GoodsModifyCommand;
 import com.category.model.entity.Goods;
 import com.category.model.enums.CustomExceptionStatus;
 import com.category.model.mapper.GoodsMapper;

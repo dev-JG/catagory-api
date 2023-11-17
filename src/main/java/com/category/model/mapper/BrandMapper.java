@@ -1,6 +1,6 @@
 package com.category.model.mapper;
 
-import com.category.model.dto.request.BrandAddCommand;
+import com.category.model.dto.command.BrandAddCommand;
 import com.category.model.entity.Brand;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

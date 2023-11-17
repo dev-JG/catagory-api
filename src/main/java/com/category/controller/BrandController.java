@@ -1,7 +1,7 @@
 package com.category.controller;
 
-import com.category.model.dto.request.BrandAddCommand;
-import com.category.model.dto.request.BrandModifyCommand;
+import com.category.model.dto.command.BrandAddCommand;
+import com.category.model.dto.command.BrandModifyCommand;
 import com.category.service.BrandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,8 @@
 package com.category.service.impl;
 
 import com.category.config.exception.CustomException;
-import com.category.model.dto.request.BrandAddCommand;
-import com.category.model.dto.request.BrandModifyCommand;
+import com.category.model.dto.command.BrandAddCommand;
+import com.category.model.dto.command.BrandModifyCommand;
 import com.category.model.enums.CustomExceptionStatus;
 import com.category.model.mapper.BrandMapper;
 import com.category.repository.BrandRepository;

@@ -1,7 +1,7 @@
 package com.category.controller;
 
-import com.category.model.dto.request.GoodsAddCommand;
-import com.category.model.dto.request.GoodsModifyCommand;
+import com.category.model.dto.command.GoodsAddCommand;
+import com.category.model.dto.command.GoodsModifyCommand;
 import com.category.service.GoodsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

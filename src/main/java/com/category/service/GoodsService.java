@@ -1,7 +1,7 @@
 package com.category.service;
 
-import com.category.model.dto.request.GoodsAddCommand;
-import com.category.model.dto.request.GoodsModifyCommand;
+import com.category.model.dto.command.GoodsAddCommand;
+import com.category.model.dto.command.GoodsModifyCommand;
 
 public interface GoodsService {
 
