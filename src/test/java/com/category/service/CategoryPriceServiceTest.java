@@ -55,4 +55,18 @@ public class CategoryPriceServiceTest {
         Assertions.assertThat(response.getTotalPrice()).isEqualTo(34100);
         Assertions.assertThat(response.getGoodsList().size()).isEqualTo(8);
     }
+
+    @Test
+    void 전체카테고리_최저가_브랜드_조회_테스트() {
+        // given
+        var categoryPriceService = this.categoryPriceService;
+
+        // when
+        var response = categoryPriceService.getAllCategoryMinPriceByBrand();
+
+        // then
+        Assertions.assertThat(response.getTotalPrice()).isEqualTo(36100);
+        Assertions.assertThat(response.getBrandName()).isEqualTo("D");
+        Assertions.assertThat(response.getGoodsList().size()).isEqualTo(8);
+    }
 }

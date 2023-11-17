@@ -11,7 +11,6 @@ import com.category.model.enums.DisplayStatus;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.SubQueryExpression;
 import com.querydsl.core.types.dsl.NumberExpression;
-import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -65,8 +64,7 @@ public class CategoryPriceRepository {
     }
 
     public GoodsResponse findMinPriceGoodsByCategoryNo(Long categoryNo) {
-        SubQueryExpression<Long> minPriceSubQuery = JPAExpressions
-                .select(goods.price.min())
+        SubQueryExpression<Long> minPriceSubQuery = select(goods.price.min())
                 .from(goods)
                 .where(goods.status.eq(DisplayStatus.SALE)
                         .and(goods.categoryNo.eq(category.categoryNo))

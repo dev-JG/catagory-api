@@ -4,6 +4,7 @@ import com.category.model.dto.response.MinAndMaxPriceGoodsByCategoryResponse;
 import com.category.model.dto.response.MinPriceGoodsByBrandResponse;
 import com.category.model.dto.response.MinPriceGoodsByCategoryResponse;
 import com.category.repository.CategoryPriceRepository;
+import com.category.repository.GoodsRepositoryCustom;
 import com.category.service.CategoryPriceService;
 import com.category.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ public class CategoryPriceServiceImpl implements CategoryPriceService {
 
     private final CategoryService categoryService;
     private final CategoryPriceRepository categoryPriceRepository;
+    private final GoodsRepositoryCustom goodsRepositoryCustom;
 
     @Transactional(readOnly = true)
     @Override
@@ -37,6 +39,7 @@ public class CategoryPriceServiceImpl implements CategoryPriceService {
     @Override
     public MinPriceGoodsByCategoryResponse getCategoryMinPriceGoods() {
         var minPrices = categoryPriceRepository.findMinPriceGoodsByAllCategoryNo();
+
         return MinPriceGoodsByCategoryResponse.builder()
                 .goodsList(minPrices)
                 .build();
@@ -44,6 +47,13 @@ public class CategoryPriceServiceImpl implements CategoryPriceService {
 
     @Override
     public MinPriceGoodsByBrandResponse getAllCategoryMinPriceByBrand() {
-        return null;
+        var brandSummary = goodsRepositoryCustom.findMinGoodsTotalPriceByBrand();
+        var goods = goodsRepositoryCustom.findGoodsByBrandNo(brandSummary.getBrandNo());
+
+        return MinPriceGoodsByBrandResponse.builder()
+                .totalPrice(brandSummary.getTotalPrice())
+                .brandName(brandSummary.getBrandName())
+                .goodsList(goods)
+                .build();
     }
 }
