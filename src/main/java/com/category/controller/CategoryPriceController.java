@@ -22,24 +22,21 @@ public class CategoryPriceController {
     public ResponseEntity<MinAndMaxPriceGoodsByCategoryResponse> getMinAndMaxPriceGoodsByCategory(
             @RequestParam(value = "categoryName") String categoryName) {
 
-        return ResponseEntity.ok(
-                categoryPriceService.getMinAndMaxPriceGoodsByCategory(categoryName)
-        );
+        return ResponseEntity.ok()
+                .body(categoryPriceService.getMinAndMaxPriceGoodsByCategory(categoryName));
     }
 
     @GetMapping("/goods/min")
     public ResponseEntity<MinPriceGoodsByCategoryResponse> getCategoryMinPriceGoods() {
 
-        return ResponseEntity.ok(
-                categoryPriceService.getCategoryMinPriceGoods()
-        );
+        return ResponseEntity.ok()
+                .body(categoryPriceService.getCategoryMinPriceGoods());
     }
 
     @GetMapping("/brand/min")
     public ResponseEntity<MinPriceGoodsByBrandResponse> getAllCategoryMinPriceByBrand() {
 
-        return ResponseEntity.ok(
-                categoryPriceService.getAllCategoryMinPriceByBrand()
-        );
+        return ResponseEntity.ok()
+                .body(categoryPriceService.getAllCategoryMinPriceByBrand());
     }
 }

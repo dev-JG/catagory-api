@@ -34,7 +34,7 @@ DB
 1-1. 프론트페이지
 - http://localhost:8080/category/brand/minPrice
 - /api/v1/categories/price/goods/min를 호출하여, 화면에 표시하는 간단한 기능의 페이지
-![initial](https://user-images.githubusercontent.com/60951370/283982893-e260ec2b-5ad5-417a-9628-dd05d881a165.png)
+![initial](https://user-images.githubusercontent.com/60951370/283985430-f038008c-514f-49d5-8714-8e23f1557685.png)
 
 2. 단일 브랜드로 모든 카테고리 상품을 구매할 때 최저가격에 판매하는 브랜드와 카테고리의 상품가격, 총액을 조회하는 API
 - GET, /api/v1/categories/price/brand/min

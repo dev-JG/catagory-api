@@ -18,9 +18,8 @@ public class BrandController {
     public ResponseEntity<Long> createBrand(
             @RequestBody BrandAddCommand addCommand
     ) {
-        return ResponseEntity.ok(
-                brandService.createBrand(addCommand)
-        );
+        return ResponseEntity.ok()
+                .body(brandService.createBrand(addCommand));
     }
 
     @PutMapping("/{brandNo}")
@@ -28,17 +27,15 @@ public class BrandController {
             @PathVariable long brandNo,
             @RequestBody BrandModifyCommand modifyCommand
     ) {
-        return ResponseEntity.ok(
-                brandService.modifyBrand(brandNo, modifyCommand)
-        );
+        return ResponseEntity.ok()
+                .body(brandService.modifyBrand(brandNo, modifyCommand));
     }
 
     @DeleteMapping("/{brandNo}")
     public ResponseEntity<Boolean> deleteBrand(
             @PathVariable long brandNo
     ) {
-        return ResponseEntity.ok(
-                brandService.deleteBrand(brandNo)
-        );
+        return ResponseEntity.ok()
+                .body(brandService.deleteBrand(brandNo));
     }
 }

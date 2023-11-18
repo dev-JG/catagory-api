@@ -18,9 +18,8 @@ public class GoodsController {
     public ResponseEntity<Long> createGoodsNo(
             @RequestBody GoodsAddCommand addCommand
     ) {
-        return ResponseEntity.ok(
-                goodsService.createGoods(addCommand)
-        );
+        return ResponseEntity.ok()
+                .body(goodsService.createGoods(addCommand));
     }
 
     @PutMapping("/{goodsNo}")
@@ -28,17 +27,15 @@ public class GoodsController {
             @PathVariable long goodsNo,
             @RequestBody GoodsModifyCommand modifyCommand
     ) {
-        return ResponseEntity.ok(
-                goodsService.modifyGoods(goodsNo, modifyCommand)
-        );
+        return ResponseEntity.ok()
+                .body(goodsService.modifyGoods(goodsNo, modifyCommand));
     }
 
     @DeleteMapping("/{goodsNo}")
     public ResponseEntity<Boolean> deleteGoodsNo(
             @PathVariable long goodsNo
     ) {
-        return ResponseEntity.ok(
-                goodsService.deleteGoods(goodsNo)
-        );
+        return ResponseEntity.ok()
+                .body(goodsService.deleteGoods(goodsNo));
     }
 }
